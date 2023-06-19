@@ -1,3 +1,3 @@
-public Calculate implements iCalculate {
+public Calculate implements iCalculate<ComplexNumber> {
   
 }
