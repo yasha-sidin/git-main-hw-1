@@ -1,0 +1,3 @@
+public Calculate implements iCalculate {
+  
+}
