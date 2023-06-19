@@ -37,12 +37,10 @@ public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     return new ComplexNumber(real, imaginary);
   }
   
-  @Override
   public ComplexNumber getFirstNumber() {
     return firstNum;
   }
 
-  @Override
   public ComplexNumber getSecondNumber() {
     return SecondNum;
   }
