@@ -1,8 +1,10 @@
 public interface iCalculate<T> {
+  T firstNum;
+  T secondNum;
   
-  public T multiplication(T firstNum, T secondNum);
+  public T multiplication();
 
-  public T sum(T firstNum, T secondNum);
+  public T sum();
 
-  public T division(T firstNum, T secondNum);
+  public T division();
 }
