@@ -5,7 +5,7 @@ public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
   ComplexNumber firstNum;
   ComplexNumber secondNum;
 
-  public Calculate(ComplexNumber numFirst, ComplexNumber numSecond) {
+  public CalculateComplexNumber(ComplexNumber numFirst, ComplexNumber numSecond) {
     firstNum = this.numFirst;
     secondNum = this.numSecond;
   }
