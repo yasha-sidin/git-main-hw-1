@@ -1,6 +1,4 @@
 public interface iCalculate<T> {
-  private T firstNum;
-  private T secondNum;
   
   public T multiplication();
 
@@ -8,7 +6,4 @@ public interface iCalculate<T> {
 
   public T division();
 
-  public T getFirstNumber();
-
-  public T getSecondNumber();
 }
