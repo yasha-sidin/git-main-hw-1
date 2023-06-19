@@ -1,6 +1,8 @@
-public class CalculateData {
-  String calcData;
+public class Data {
+  String data;
 
-  public CalculateDate(iCalculate)
+  public CalculateDate(String data) {
+    data = this.data;
+  }
   
 }
