@@ -2,8 +2,8 @@ import Model.ComplexNumber;
 import Math;
 
 public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
-  ComplexNumber firstNum;
-  ComplexNumber secondNum;
+  private ComplexNumber firstNum;
+  private ComplexNumber secondNum;
 
   public CalculateComplexNumber(ComplexNumber numFirst, ComplexNumber numSecond) {
     firstNum = this.numFirst;
@@ -36,4 +36,15 @@ public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     Double imaginary = firstNum.getImaginary() + secondNum.getImaginary();
     return new ComplexNumber(real, imaginary);
   }
+  
+  @Override
+  public ComplexNumber getFirstNumber {
+    return firstNum;
+  }
+
+  @Override
+  public ComplexNumber getSecondNumber {
+    return SecondNum;
+  }
+
 }
