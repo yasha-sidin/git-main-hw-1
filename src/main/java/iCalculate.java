@@ -7,4 +7,8 @@ public interface iCalculate<T> {
   public T sum();
 
   public T division();
+
+  public T getFirstNumber();
+
+  public T getSecondNumber();
 }
