@@ -38,12 +38,12 @@ public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
   }
   
   @Override
-  public ComplexNumber getFirstNumber {
+  public ComplexNumber getFirstNumber() {
     return firstNum;
   }
 
   @Override
-  public ComplexNumber getSecondNumber {
+  public ComplexNumber getSecondNumber() {
     return SecondNum;
   }
 
