@@ -36,13 +36,4 @@ public CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     Double imaginary = firstNum.getImaginary() + secondNum.getImaginary();
     return new ComplexNumber(real, imaginary);
   }
-  
-  public ComplexNumber getFirstNumber() {
-    return firstNum;
-  }
-
-  public ComplexNumber getSecondNumber() {
-    return SecondNum;
-  }
-
 }
