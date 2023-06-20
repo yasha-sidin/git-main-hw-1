@@ -28,6 +28,12 @@ public class ComplexNumber {
 
     @Override
     public String toString() {
-        return real.toString() + imaginary.toString() + 'i';
+        if (imaginary < 0.0) {
+            return "(" + real.toString() + " " + imaginary.toString() + 'i' + ")";
+        }
+        if (imaginary == 0.0) {
+            return real.toString();
+        }
+        return "(" + real.toString() + "+" + imaginary.toString() + 'i' + ")";
     }
 }
