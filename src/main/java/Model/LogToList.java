@@ -5,18 +5,22 @@ import ViewController.iObserver;
 import ViewController.iPublisher;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LogToList implements iGetModel {
-    private List<String> logList;
+    private List<String> logList = new ArrayList<>();
 
     public LogToList(iPublisher publisher) {
+
         publisher.registerObserver(this);
     }
 
     @Override
     public void update(Data data) {
-        logList.add(new SimpleDateFormat("E yyyy.MM.dd hh:mm:ss a zzz").toString() + " : " + data.toString());
+        Date currentDate = new Date(System.currentTimeMillis());
+        logList.add(currentDate + " : " + data.toString());
     }
 
     @Override

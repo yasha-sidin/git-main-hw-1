@@ -1,7 +1,6 @@
 package ViewController;
 
-import Model.ComplexNumber;
-import Model.UseData;
+import Model.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +20,7 @@ public class ViewController extends JFrame {
     JLabel resultPart;
 
     public void initialize(iPublisher publisher) {
-        this.publisher = publisher
+        this.publisher = publisher;
 
         JLabel realPartInPutFn = new JLabel("First num's realPart: ");
         realPartInPutFn.setFont(mainFont);
@@ -68,7 +67,8 @@ public class ViewController extends JFrame {
         resultPart = new JLabel();
         resultPart.setFont(resultFont);
 
-        Data data = new CalcResultData();
+        CalcResultData data = new CalcResultData();
+        SimpleData dataSimple = new SimpleData();
         CalculateComplexNumbers calculator = new CalculateComplexNumbers();
 
         JButton bPlus = new JButton("+");
@@ -89,16 +89,18 @@ public class ViewController extends JFrame {
                     ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
                     calculator.setSecondNum(cn2);
                     
-                    ComplexNumber result = calculator.sum(cn1, cn2);
-                    data.setData(cn1, cn2, result, "+");
+                    ComplexNumber result = calculator.sum();
+                    data.setData(cn1, cn2, result, '+');
                     
-                    resultPart.setText(data.getCalcResultData());
+                    resultPart.setText(data.getData());
                     publisher.onNewData(data);
 
                 } catch (ConcurrentModificationException a) {
 
                 } catch (NumberFormatException a) {
                     resultPart.setText("You entered data with error or didn't input one of element or all elements");
+                    dataSimple.setData("Exception");
+                    publisher.onNewData(dataSimple);
                 }
                 realPartFn.setText("");
                 imaginaryPartFn.setText("");
@@ -126,16 +128,18 @@ public class ViewController extends JFrame {
                     ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
                     calculator.setSecondNum(cn2);
                     
-                    ComplexNumber result = calculator.division(cn1, cn2);
-                    data.setData(cn1, cn2, result, "/");
+                    ComplexNumber result = calculator.division();
+                    data.setData(cn1, cn2, result, '/');
                     
-                    resultPart.setText(data.getCalcResultData());
+                    resultPart.setText(data.getData());
                     publisher.onNewData(data);
 
                 } catch (ConcurrentModificationException a) {
 
                 } catch (NumberFormatException a) {
                     resultPart.setText("You entered data with error or didn't input one of element or all elements");
+                    dataSimple.setData("Exception");
+                    publisher.onNewData(dataSimple);
                 }
                 realPartFn.setText("");
                 imaginaryPartFn.setText("");
@@ -163,16 +167,19 @@ public class ViewController extends JFrame {
                     ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
                     calculator.setSecondNum(cn2);
                     
-                    ComplexNumber result = calculator.multiplication(cn1, cn2);
-                    data.setData(cn1, cn2, result, "*");
+                    ComplexNumber result = calculator.multiplication();
+                    data.setData(cn1, cn2, result, '*');
                     
-                    resultPart.setText(data.getCalcResultData());
+                    resultPart.setText(data.getData());
                     publisher.onNewData(data);
 
                 } catch (ConcurrentModificationException a) {
 
                 } catch (NumberFormatException a) {
                     resultPart.setText("You entered data with error or didn't input one of element or all elements");
+                    dataSimple.setData("Exception");
+                    publisher.onNewData(dataSimple);
+
                 }
                 realPartFn.setText("");
                 imaginaryPartFn.setText("");
@@ -188,9 +195,11 @@ public class ViewController extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                realPart.setText("");
-                imaginaryPart.setText("");
-                middlePart.setText("");
+                realPartFn.setText("");
+                imaginaryPartFn.setText("");
+                resultPart.setText("");
+                realPartSn.setText("");
+                imaginaryPartSn.setText("");
             }
         });
 
@@ -212,7 +221,7 @@ public class ViewController extends JFrame {
         resultPanel.setBackground(new Color(0, 100, 250));
 
         add(mainPanel, BorderLayout.NORTH);
-        add(resultPanel, BorderLayout.SOUTH);
+        add(resultPanel, BorderLayout.CENTER);
 
         mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 4, 5));
         formPanel.setOpaque(false);
@@ -220,7 +229,7 @@ public class ViewController extends JFrame {
 
 
         setTitle("ComplexNumber Calculator");
-        setSize(700, 800);
+        setSize(900, 800);
         setMaximumSize(new Dimension(300, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

@@ -1,6 +1,6 @@
 package Model;
 
-import ViewController.iObserver;
+import ViewController.iGetModel;
 import ViewController.iPublisher;
 
 import java.util.HashSet;
@@ -9,21 +9,21 @@ import java.util.Set;
 public class UseData implements iPublisher {
     Data data;
 
-    private Set<iObserver> observers = new HashSet<>();
+    private Set<iGetModel> observers = new HashSet<>();
 
     @Override
-    public void registerObserver(iObserver observer) {
+    public void registerObserver(iGetModel observer) {
         observers.add(observer);
     }
 
     @Override
-    public void unregisterObserver(iObserver observer) {
+    public void unregisterObserver(iGetModel observer) {
         observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-        for (iObserver observer : observers)
+        for (iGetModel observer : observers)
             observer.update(data);
     }
 

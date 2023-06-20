@@ -7,11 +7,12 @@ public class CalcResultData extends Data<String> {
         this.calcResultData = "";
     }
 
-    public String getCalcResultData() {
+    public String getData() {
         return calcResultData;
     }
 
     public void setData(ComplexNumber cn1, ComplexNumber cn2, ComplexNumber result, char activity) {
         this.calcResultData = cn1.toString() + " " + activity + " " + cn2.toString() + " = " + result.toString();;
     }
+
 }

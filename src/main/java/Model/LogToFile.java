@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LogToFile implements iGetModel {
@@ -22,7 +23,8 @@ public class LogToFile implements iGetModel {
     @Override
     public void update(Data data) {
         try (FileWriter fw = new FileWriter(fileName, true)) {
-            fw.write(new SimpleDateFormat("E yyyy.MM.dd hh:mm:ss a zzz").toString() + " " + data.toString() + "\n");
+            Date currentDate = new Date(System.currentTimeMillis());
+            fw.write(currentDate + " : " + data.getData() + "\n");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

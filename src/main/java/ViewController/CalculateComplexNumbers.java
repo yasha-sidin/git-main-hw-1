@@ -13,7 +13,7 @@ public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     }
 
     @Override
-    public static ComplexNumber multiplication() {
+    public ComplexNumber multiplication() {
         Double real = (firstNum.getReal() * secondNum.getReal()) -
                 (firstNum.getImaginary() * secondNum.getImaginary());
         Double imaginary = (firstNum.getReal() * secondNum.getImaginary()) +
@@ -23,10 +23,10 @@ public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     }
 
     @Override
-    public static ComplexNumber division() {
+    public ComplexNumber division() {
         Double a = firstNum.getReal();
-        Double b = secondNum.getImaginary();
-        Double c = firstNum.getReal();
+        Double b = firstNum.getImaginary();
+        Double c = secondNum.getReal();
         Double d = secondNum.getImaginary();
         double v = Math.pow(c, 2) + Math.pow(d, 2);
         Double real = ((a * c) + (b * d)) / v;
@@ -35,7 +35,7 @@ public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     }
 
     @Override
-    public static ComplexNumber sum() {
+    public ComplexNumber sum() {
         Double real = firstNum.getReal() + secondNum.getReal();
         Double imaginary = firstNum.getImaginary() + secondNum.getImaginary();
         return new ComplexNumber(real, imaginary);

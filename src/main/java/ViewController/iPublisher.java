@@ -1,10 +1,12 @@
 package ViewController;
 
+import Model.Data;
+
 public interface iPublisher {
 
-    public void registerObserver(iObserver observer);
+    public void registerObserver(iGetModel observer);
 
-    public void unregisterObserver(iObserver observer);
+    public void unregisterObserver(iGetModel observer);
 
     public void notifyObservers();
 
