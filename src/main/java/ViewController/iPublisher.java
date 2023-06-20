@@ -7,4 +7,6 @@ public interface iPublisher {
     public void unregisterObserver(iObserver observer);
 
     public void notifyObservers();
+
+    public void onNewData(Data data);
 }
