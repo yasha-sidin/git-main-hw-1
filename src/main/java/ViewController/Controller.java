@@ -10,7 +10,7 @@ import java.util.ConcurrentModificationException;
 
 import javax.swing.*;
 
-public class Controller extends JFrame {
+public class ViewController extends JFrame {
     iPublisher publisher;
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 14);
     final private Font resultFont = new Font("Segoe print", Font.BOLD, 20);
@@ -90,7 +90,7 @@ public class Controller extends JFrame {
                     calculator.setSecondNum(cn2);
                     
                     ComplexNumber result = calculator.sum(cn1, cn2);
-                    data.setData(cn1, cn2, result, "/");
+                    data.setData(cn1, cn2, result, "+");
                     
                     resultPart.setText(data.getCalcResultData());
                     publisher.onNewData(data);
@@ -145,10 +145,46 @@ public class Controller extends JFrame {
 
         });
 
+        JButton bMulti = new JButton("*");
+        bMulti.setFont(mainFont);
+        bMulti.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    double realPartNumFn = Double.parseDouble(realPartFn.getText());
+                    double imaginaryPartNumFn = Double.parseDouble(imaginaryPartFn.getText());
+                    double realPartNumSn = Double.parseDouble(realPartSn.getText());
+                    double imaginaryPartNumSn = Double.parseDouble(imaginaryPartSn.getText());
+
+                    ComplexNumber cn1 = new ComplexNumber(realPartNumFn, imaginaryPartNumFn);
+                    calculator.setFirstNum(cn1);
+
+                    ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
+                    calculator.setSecondNum(cn2);
+                    
+                    ComplexNumber result = calculator.multiplication(cn1, cn2);
+                    data.setData(cn1, cn2, result, "*");
+                    
+                    resultPart.setText(data.getCalcResultData());
+                    publisher.onNewData(data);
+
+                } catch (ConcurrentModificationException a) {
+
+                } catch (NumberFormatException a) {
+                    resultPart.setText("You entered data with error or didn't input one of element or all elements");
+                }
+                realPartFn.setText("");
+                imaginaryPartFn.setText("");
+                realPartSn.setText("");
+                imaginaryPartSn.setText("");
+            }
+
+        });
+
         JButton btnClear = new JButton("Clear");
         btnClear.setFont(mainFont);
         btnClear.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -158,17 +194,12 @@ public class Controller extends JFrame {
             }
         });
 
-
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 2, 5, 5));
         buttonPanel.add(bPlus);
         buttonPanel.add(bDevision);
         buttonPanel.add(bMulti);
-        buttonPanel.add(bEqually);hh
         buttonPanel.add(btnClear);
-
-//        JPanel custumerPanel = new JPanel();
-
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -176,28 +207,19 @@ public class Controller extends JFrame {
         mainPanel.add(formPanel, BorderLayout.NORTH);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        JScrollPane scroll = new JScrollPane(
-                textArea,
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED
-        );
-
-        JPanel outputPanel = new JPanel();
-        outputPanel.add(lbWelcome);
-        outputPanel.setBackground(new Color(0, 100, 250));
-
+        JPanel resultPanel = new JPanel();
+        resultPanel.add(resultPart);
+        resultPanel.setBackground(new Color(0, 100, 250));
 
         add(mainPanel, BorderLayout.NORTH);
-        add(outputPanel, BorderLayout.CENTER);
-        add(scroll, BorderLayout.SOUTH);
-
+        add(resultPanel, BorderLayout.SOUTH);
 
         mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 4, 5));
         formPanel.setOpaque(false);
         buttonPanel.setOpaque(false);
 
 
-        setTitle("VendingMachines");
+        setTitle("ComplexNumber Calculator");
         setSize(700, 800);
         setMaximumSize(new Dimension(300, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
