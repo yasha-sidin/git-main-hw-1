@@ -2,11 +2,14 @@ package ViewController;
 
 import Model.ComplexNumber;
 
-
 public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     private ComplexNumber firstNum;
     private ComplexNumber secondNum;
 
+    /**
+     * Constructor of this Calculator which set default first and second numbers
+     *
+     */
     public CalculateComplexNumbers() {
         this.firstNum = new ComplexNumber(0.0, 0.0);
         this.secondNum = new ComplexNumber(0.0, 0.0);
@@ -41,10 +44,20 @@ public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
         return new ComplexNumber(real, imaginary);
     }
 
+    /**
+     * Set new firstNum to this Calculator
+     *
+     * @param firstNum new firstNum for calculator
+     */
     public void setFirstNum(ComplexNumber firstNum) {
         this.firstNum = firstNum;
     }
 
+    /**
+     * Set new secondNum to this Calculator
+     *
+     * @param secondNum new secondNum for calculator
+     */
     public void setSecondNum(ComplexNumber secondNum) {
         this.secondNum = secondNum;
     }

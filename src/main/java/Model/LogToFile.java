@@ -15,6 +15,11 @@ import java.util.List;
 public class LogToFile implements iGetModel {
     String fileName;
 
+    /**
+     * Constructor of LogToFile
+     * @param publisher iPublisher which LogToFile will observe
+     * @param fileName  name of new file which will observe logs
+     */
     public LogToFile(iPublisher publisher, String fileName) {
         publisher.registerObserver(this);
         this.fileName = fileName;

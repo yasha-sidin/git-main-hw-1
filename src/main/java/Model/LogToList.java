@@ -12,6 +12,10 @@ import java.util.List;
 public class LogToList implements iGetModel {
     private List<String> logList = new ArrayList<>();
 
+    /**
+     * Constructor of LogToFile
+     * @param publisher iPublisher which LogToList will observe
+     */
     public LogToList(iPublisher publisher) {
 
         publisher.registerObserver(this);
