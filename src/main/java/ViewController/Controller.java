@@ -76,31 +76,43 @@ public class Controller extends JFrame {
         bPlus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                data.delete(0, data.length());
                 try {
 
-                    double realPartNum = Double.parseDouble(realPart.getText());
-                    double imaginaryPartNum = Double.parseDouble(imaginaryPart.getText());
-                    ComplexNumber cn = new ComplexNumber(realPartNum, imaginaryPartNum);
-                    data.append(cn.toString() + " + ");
+                    double realPartNumFn = Double.parseDouble(realPartFn.getText());
+                    double imaginaryPartNumFn = Double.parseDouble(imaginaryPartFn.getText());
+                    double realPartNumSn = Double.parseDouble(realPartSn.getText());
+                    double imaginaryPartNumSn = Double.parseDouble(imaginaryPartSn.getText());
+
+                    ComplexNumber cn1 = new ComplexNumber(realPartNumFn, imaginaryPartNumFn);
+                    calculator.setFirstNum(cn1);
+
+                    ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
+                    calculator.setSecondNum(cn2);
+                    
+                    ComplexNumber result = calculator.sum(cn1, cn2);
+                    data.setData(cn1, cn2, result, "/");
+                    
+                    resultPart.setText(data.getCalcResultData());
+                    publisher.onNewData(data);
 
                 } catch (ConcurrentModificationException a) {
 
                 } catch (NumberFormatException a) {
                     resultPart.setText("You entered data with error or didn't input one of element or all elements");
                 }
-                realPart.setText("");
-                imaginaryPart.setText("");
+                realPartFn.setText("");
+                imaginaryPartFn.setText("");
+                realPartSn.setText("");
+                imaginaryPartSn.setText("");
             }
 
         });
 
         JButton bDevision = new JButton("/");
-        bPlus.setFont(mainFont);
-        bPlus.addActionListener(new ActionListener() {
+        bDevision.setFont(mainFont);
+        bDevision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                data.delete(0, data.length());
                 try {
 
                     double realPartNumFn = Double.parseDouble(realPartFn.getText());
