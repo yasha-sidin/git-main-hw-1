@@ -54,7 +54,6 @@ public class Controller extends JFrame {
         imaginaryPartSn.setFont(mainFont);
         imaginaryPartSn.setText("");
 
-
         JPanel formPanelSn = new JPanel();
         formPanelSn.setLayout(new GridLayout(10, 1, 5, 4));
         formPanelSn.add(realPartInPutSn);
@@ -70,7 +69,7 @@ public class Controller extends JFrame {
         resultPart.setFont(resultFont);
 
         StringBuilder data = new StringBuilder();
-        CalculateComplexNumber calculator = new Calculator();
+        CalculateComplexNumbers calculator = new CalculateComplexNumbers();
 
         JButton bPlus = new JButton("+");
         bPlus.setFont(mainFont);
@@ -110,9 +109,16 @@ public class Controller extends JFrame {
                     double imaginaryPartNumSn = Double.parseDouble(imaginaryPartSn.getText());
 
                     ComplexNumber cn1 = new ComplexNumber(realPartNumFn, imaginaryPartNumFn);
+                    calculator.setFirstNum(cn1);
+
                     ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
-                    calculator.set
-                    data.append(cn1.toString() + " / " + cn2.toString() + );
+                    calculator.setSecondNum(cn2);
+                    
+                    ComplexNumber result = calculator.division(cn1, cn2);
+                    data.append(cn1.toString() + " / " + cn2.toString() + " = " + result.toString());
+                    
+                    resultPart.setText(data.toString());
+                    publisher.
 
                 } catch (ConcurrentModificationException a) {
 
