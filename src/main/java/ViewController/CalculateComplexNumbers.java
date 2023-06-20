@@ -7,9 +7,9 @@ public class CalculateComplexNumbers implements iCalculate<ComplexNumber> {
     private ComplexNumber firstNum;
     private ComplexNumber secondNum;
 
-    public CalculateComplexNumbers(ComplexNumber fcn, ComplexNumber scn) {
-        this.firstNum = fcn;
-        this.secondNum = scn;
+    public CalculateComplexNumbers() {
+        this.firstNum = new ComplexNumber(0.0, 0.0);
+        this.secondNum = new ComplexNumber(0.0, 0.0);
     }
 
     @Override
