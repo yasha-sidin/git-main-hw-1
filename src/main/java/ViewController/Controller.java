@@ -70,6 +70,7 @@ public class Controller extends JFrame {
         resultPart.setFont(resultFont);
 
         StringBuilder data = new StringBuilder();
+        CalculateComplexNumber calculator = new Calculator();
 
         JButton bPlus = new JButton("+");
         bPlus.setFont(mainFont);
@@ -103,10 +104,15 @@ public class Controller extends JFrame {
                 data.delete(0, data.length());
                 try {
 
-                    double realPartNum = Double.parseDouble(realPart.getText());
-                    double imaginaryPartNum = Double.parseDouble(imaginaryPart.getText());
-                    ComplexNumber cn = new ComplexNumber(realPartNum, imaginaryPartNum);
-                    data.append(cn.toString() + " / ");
+                    double realPartNumFn = Double.parseDouble(realPartFn.getText());
+                    double imaginaryPartNumFn = Double.parseDouble(imaginaryPartFn.getText());
+                    double realPartNumSn = Double.parseDouble(realPartSn.getText());
+                    double imaginaryPartNumSn = Double.parseDouble(imaginaryPartSn.getText());
+
+                    ComplexNumber cn1 = new ComplexNumber(realPartNumFn, imaginaryPartNumFn);
+                    ComplexNumber cn2 = new ComplexNumber(realPartNumSn, imaginaryPartNumSn);
+                    calculator.set
+                    data.append(cn1.toString() + " / " + cn2.toString() + );
 
                 } catch (ConcurrentModificationException a) {
 
