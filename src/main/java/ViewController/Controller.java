@@ -68,7 +68,7 @@ public class Controller extends JFrame {
         resultPart = new JLabel();
         resultPart.setFont(resultFont);
 
-        StringBuilder data = new StringBuilder();
+        Data data = new CalcResultData();
         CalculateComplexNumbers calculator = new CalculateComplexNumbers();
 
         JButton bPlus = new JButton("+");
@@ -115,10 +115,10 @@ public class Controller extends JFrame {
                     calculator.setSecondNum(cn2);
                     
                     ComplexNumber result = calculator.division(cn1, cn2);
-                    data.append(cn1.toString() + " / " + cn2.toString() + " = " + result.toString());
+                    data.setData(cn1, cn2, result, "/");
                     
-                    resultPart.setText(data.toString());
-                    publisher.
+                    resultPart.setText(data.getCalcResultData());
+                    publisher.onNewData(data);
 
                 } catch (ConcurrentModificationException a) {
 
@@ -150,7 +150,7 @@ public class Controller extends JFrame {
         buttonPanel.add(bPlus);
         buttonPanel.add(bDevision);
         buttonPanel.add(bMulti);
-        buttonPanel.add(bEqually);
+        buttonPanel.add(bEqually);hh
         buttonPanel.add(btnClear);
 
 //        JPanel custumerPanel = new JPanel();
