@@ -11,45 +11,63 @@ import java.util.ConcurrentModificationException;
 import javax.swing.*;
 
 public class Controller extends JFrame {
-    iGetModel model;
     iPublisher publisher;
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 14);
     final private Font resultFont = new Font("Segoe print", Font.BOLD, 20);
-    JTextField realPart;
-    JTextField imaginaryPart;
-    JTextArea middlePart;
+    JTextField realPartFn;
+    JTextField imaginaryPartFn;
+    JTextField realPartSn;
+    JTextField imaginaryPartSn;
     JLabel resultPart;
 
-    public void initialize(iGetModel model) {
-        this.model = model;
-        publisher = new UseData();
+    public void initialize(iPublisher publisher) {
+        this.publisher = publisher
 
-        JLabel realPartInPut = new JLabel("Input realPart: ");
-        realPartInPut.setFont(mainFont);
-        realPart = new JTextField();
-        realPart.setFont(mainFont);
-        realPart.setText("");
+        JLabel realPartInPutFn = new JLabel("First num's realPart: ");
+        realPartInPutFn.setFont(mainFont);
+        realPartFn = new JTextField();
+        realPartFn.setFont(mainFont);
+        realPartFn.setText("");
 
-        JLabel imaginaryPartInPut = new JLabel("Input imaginaryPart: ");
-        imaginaryPartInPut.setFont(mainFont);
-        imaginaryPart = new JTextField();
-        imaginaryPartInPut.setFont(mainFont);
-        imaginaryPartInPut.setText("");
+        JLabel imaginaryPartInPutFn = new JLabel("First num's imaginaryPart: ");
+        imaginaryPartInPutFn.setFont(mainFont);
+        imaginaryPartFn = new JTextField();
+        imaginaryPartFn.setFont(mainFont);
+        imaginaryPartFn.setText("");
 
-        middlePart = new JTextArea(10, 10);
-        middlePart.setFont(mainFont);
-        middlePart.setText("");
-        middlePart.setBackground(new Color(0, 200, 255));
+        JPanel formPanelFn = new JPanel();
+        formPanelFn.setLayout(new GridLayout(10, 1, 5, 4));
+        formPanelFn.add(realPartInPutFn);
+        formPanelFn.add(realPartFn);
+        formPanelFn.add(imaginaryPartInPutFn);
+        formPanelFn.add(imaginaryPartFn);
+
+        JLabel realPartInPutSn = new JLabel("Second num's realPart: ");
+        realPartInPutSn.setFont(mainFont);
+        realPartSn = new JTextField();
+        realPartSn.setFont(mainFont);
+        realPartSn.setText("");
+
+        JLabel imaginaryPartInPutSn = new JLabel("Second num's imaginaryPart: ");
+        imaginaryPartInPutSn.setFont(mainFont);
+        imaginaryPartSn = new JTextField();
+        imaginaryPartSn.setFont(mainFont);
+        imaginaryPartSn.setText("");
+
+
+        JPanel formPanelSn = new JPanel();
+        formPanelSn.setLayout(new GridLayout(10, 1, 5, 4));
+        formPanelSn.add(realPartInPutSn);
+        formPanelSn.add(realPartSn);
+        formPanelSn.add(imaginaryPartInPutSn);
+        formPanelSn.add(imaginaryPartSn);
 
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(10, 1, 5, 4));
-        formPanel.add(realPartInPut);
-        formPanel.add(resultPart);
-        formPanel.add(imaginaryPartInPut);
-        formPanel.add(imaginaryPart);
+        formPanel.add(formPanelFn, BorderLayout.NORTH);
+        formPanel.add(formPanelSn, BorderLayout.SOUTH);
 
-        JLabel lbWelcome = new JLabel();
-        lbWelcome.setFont(resultFont);
+        resultPart = new JLabel();
+        resultPart.setFont(resultFont);
 
         StringBuilder data = new StringBuilder();
 
