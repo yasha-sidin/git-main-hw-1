@@ -125,8 +125,10 @@ public class Controller extends JFrame {
                 } catch (NumberFormatException a) {
                     resultPart.setText("You entered data with error or didn't input one of element or all elements");
                 }
-                realPart.setText("");
-                imaginaryPart.setText("");
+                realPartFn.setText("");
+                imaginaryPartFn.setText("");
+                realPartSn.setText("");
+                imaginaryPartSn.setText("");
             }
 
         });
