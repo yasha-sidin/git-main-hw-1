@@ -11,8 +11,8 @@ import javax.swing.*;
 
 public class ViewController extends JFrame {
     iPublisher publisher;
-    final private Font mainFont = new Font("Segoe print", Font.BOLD, 14);
-    final private Font resultFont = new Font("Segoe print", Font.BOLD, 20);
+    final private Font mainFont = new Font("Segoe print", Font.PLAIN, 14);
+    final private Font resultFont = new Font("Segoe print", Font.PLAIN, 20);
     JTextField realPartFn;
     JTextField imaginaryPartFn;
     JTextField realPartSn;
