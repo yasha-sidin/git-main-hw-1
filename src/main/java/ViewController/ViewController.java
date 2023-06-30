@@ -35,7 +35,8 @@ public class ViewController extends JFrame {
         imaginaryPartFn.setText("");
 
         JPanel formPanelFn = new JPanel();
-        formPanelFn.setLayout(new GridLayout(10, 1, 5, 4));
+        formPanelFn.setLayout(new GridLayout(15, 1, 2, 4));
+        formPanelFn.setBackground(new Color(0, 190, 255));
         formPanelFn.add(realPartInPutFn);
         formPanelFn.add(realPartFn);
         formPanelFn.add(imaginaryPartInPutFn);
@@ -54,7 +55,8 @@ public class ViewController extends JFrame {
         imaginaryPartSn.setText("");
 
         JPanel formPanelSn = new JPanel();
-        formPanelSn.setLayout(new GridLayout(10, 1, 5, 4));
+        formPanelSn.setLayout(new GridLayout(15, 1, 2, 4));
+        formPanelSn.setBackground(new Color(0, 190, 255));
         formPanelSn.add(realPartInPutSn);
         formPanelSn.add(realPartSn);
         formPanelSn.add(imaginaryPartInPutSn);
